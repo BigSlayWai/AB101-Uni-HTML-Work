@@ -154,31 +154,55 @@
             </div>
         </footer>
     </div>
-    <script>
-        // Toggle high contrast mode
-        document.getElementById('contrast-toggle').addEventListener('click', function() {
-            document.body.classList.toggle('high-contrast');
-            
-            // Save preference to localStorage
-            const isHighContrast = document.body.classList.contains('high-contrast');
-            localStorage.setItem('highContrast', isHighContrast ? 'enabled' : 'disabled');
-            
-            // Update button text
-            this.querySelector('.contrast-icon').textContent = isHighContrast ? '🌞' : '🌓';
-            this.setAttribute('aria-pressed', isHighContrast);
-        });
-    
-        // Check for saved preference on page load
-        if (localStorage.getItem('highContrast') === 'enabled') {
-            document.body.classList.add('high-contrast');
-            const toggleBtn = document.getElementById('contrast-toggle');
-            toggleBtn.querySelector('.contrast-icon').textContent = '🌞';
-            toggleBtn.setAttribute('aria-pressed', 'true');
-        }
-    </script>
     
     <!-- Bootstrap JavaScript -->
-    <script src="../js/bootstrap.min.js"></script><!-- Basic -->
-    <script src="../js/bootstrap.bundle.min.js"></script><!-- Extras e.g. dropdown menus -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contrastToggle = document.getElementById('contrast-toggle');
+            
+            // Click handler
+            contrastToggle.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+                const isHighContrast = document.body.classList.contains('high-contrast');
+                
+                // Save preference
+                localStorage.setItem('highContrast', isHighContrast ? 'enabled' : 'disabled');
+                
+                // Update button
+                this.querySelector('.contrast-icon').textContent = isHighContrast ? '🌞' : '🌓';
+                this.setAttribute('aria-pressed', isHighContrast);
+                
+                // Visual feedback
+                showFeedback(`High contrast mode ${isHighContrast ? 'enabled' : 'disabled'}`);
+            });
+            
+            // Keyboard shortcut (Ctrl+Alt+C)
+            document.addEventListener('keydown', function(event) {
+                if (event.ctrlKey && event.altKey && event.code === 'KeyC') {
+                    event.preventDefault();
+                    contrastToggle.click();
+                }
+            });
+            
+            // Initialize from localStorage
+            if (localStorage.getItem('highContrast') === 'enabled') {
+                document.body.classList.add('high-contrast');
+                contrastToggle.querySelector('.contrast-icon').textContent = '🌞';
+                contrastToggle.setAttribute('aria-pressed', 'true');
+            }
+            
+            // Feedback function
+            function showFeedback(message) {
+                const feedback = document.createElement('div');
+                feedback.className = 'accessibility-feedback';
+                feedback.textContent = message;
+                document.body.appendChild(feedback);
+                setTimeout(() => feedback.remove(), 2000);
+            }
+        });
+    </script>
 </body>
 </html>

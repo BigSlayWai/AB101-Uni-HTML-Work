@@ -63,3 +63,14 @@ form.register {
     font-size: 1.2em;
     vertical-align: middle;
 }
+
+.accessibility-feedback {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 4px;
+    z-index: 10000;
+}
