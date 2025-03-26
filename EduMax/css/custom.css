@@ -1,0 +1,65 @@
+.header {
+    background-color: #3c9fc3;
+    color: white;
+}
+
+h1.header {
+    font-size: 9vw;
+}
+
+h2, h3, h4 {
+    color: #7bd5d5;
+}
+
+form.register {
+    border: 1px solid #3c9fc3;
+    background-color: lightgrey;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.img {
+    width: 44px;
+    height: 44px;
+    transition: all 0.3s ease;
+}
+
+.img:hover {
+    width: 125px;
+    height: 125px;
+}
+
+
+.high-contrast {
+    background-color: #111;
+    color: #fff;
+}
+
+.high-contrast .header {
+    background-color: black !important;
+    color: white !important;
+}
+
+.high-contrast h2, .high-contrast h3, .high-contrast h4 {
+    color: #7bd5d5; 
+}
+
+.high-contrast .navbar {
+    background-color: #333 !important;
+}
+
+#contrast-toggle {
+    transition: all 0.3s ease;
+    border: 1px solid currentColor;
+}
+
+.high-contrast #contrast-toggle {
+    background-color: #333;
+    color: #fff;
+    border-color: #fff;
+}
+
+.contrast-icon {
+    font-size: 1.2em;
+    vertical-align: middle;
+}
